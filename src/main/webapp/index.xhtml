@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<head jsf:id="head">
+<title>JSF HTML5</title>
+</head>
+<body jsf:id="body">
+
+	<form jsf:id="form">
+		 商品名:<input type="text" jsf:id="name" value="#{itemForm.name}" />  
+		<!--  -->
+		 価格:<input type="text" jsf:id="price" value="#{itemForm.price}" />  
+		<!--  -->
+		<input type="submit" jsf:id="create" jsf:action="#{itemForm.create()}"
+			value="登録" />
+	</form>
+
+
+</body>
+</html>
