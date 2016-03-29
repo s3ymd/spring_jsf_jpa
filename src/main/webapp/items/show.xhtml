@@ -33,7 +33,7 @@
 				
                 <h:form>
 	                <h:link outcome="edit?id=#{itemShow.item.id}" styleClass="ui button">編集</h:link>
-	                <h:commandButton action="#{itemDelete.delete(itemShow.item.id)}" value="削除" styleClass="ui button"/>
+	                <h:link outcome="delete?id=#{itemShow.item.id}" styleClass="ui button">削除</h:link>
                 </h:form>
             </ui:define>
         </ui:composition>
