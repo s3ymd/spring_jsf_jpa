@@ -22,13 +22,11 @@ public class AuthenticationFilter implements Filter {
     String role = (String) request.getSession(true).getAttribute("role");
     System.out.printf("role=[%s], url=[%s]\n", role, url);
     
-//    if (accessible(role, url)) {
-//      chain.doFilter(request, response);
-//    } else {
-//      response.getWriter().write("You can not access this page.");
-//    }
-
-    chain.doFilter(request, response);
+    if (accessible(role, url)) {
+      chain.doFilter(request, response);
+    } else {
+      response.getWriter().write("You can not access this page.");
+    }
   }
 
   private boolean accessible(String role, String url) {
@@ -37,7 +35,13 @@ public class AuthenticationFilter implements Filter {
     } else if ("normal".equals(role)) {
       if (url.startsWith("/index")) {
         return true;
+      } else if (url.startsWith("/items/index")) {
+        return true;
       } else if (url.startsWith("/items/show")) {
+        return true;
+      } else if (url.startsWith("/session/login")) {
+        return true;
+      } else if (url.startsWith("/session/logout")) {
         return true;
       } else {
         return false;
@@ -48,6 +52,10 @@ public class AuthenticationFilter implements Filter {
       } else if (url.startsWith("/items/index")) {
         return true;
       } else if (url.startsWith("/items/show")) {
+        return true;
+      } else if (url.startsWith("/session/login")) {
+        return true;
+      } else if (url.startsWith("/session/logout")) {
         return true;
       } else {
         return false;
