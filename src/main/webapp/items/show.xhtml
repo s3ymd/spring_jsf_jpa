@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:metadata>
+        <f:viewParam id="id" name="id" value="#{itemShow.id}" />
+        <f:event type="preRenderView" listener="#{itemShow.preRender()}"/>
+    </f:metadata>
+    <h:head>
+        <title>商品情報</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="title">商品情報</ui:define>
+            <ui:define name="body">
+			
+				<table class="ui table">
+					<tr>
+						<td>商品番号</td>
+						<td>#{itemShow.item.id}</td>
+					</tr>
+					<tr>
+						<td>商品名</td>
+						<td>#{itemShow.item.name}</td>
+					</tr>
+					<tr>
+						<td>価格</td>
+						<td>#{itemShow.item.price}</td>
+					</tr>
+				</table>
+				
+                <h:form>
+	                <h:link outcome="edit?id=#{itemShow.item.id}" styleClass="ui button">編集</h:link>
+	                <h:commandButton action="#{itemDelete.delete(itemShow.item.id)}" value="削除" styleClass="ui button"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
