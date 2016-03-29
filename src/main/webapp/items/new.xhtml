@@ -11,11 +11,12 @@
         <ui:composition template="/templates/template.xhtml">
             <ui:define name="title">商品の新規作成</ui:define>
             <ui:define name="body">
-                <h:form styleClass="ui form">
-                    商品名: <h:inputText id="name" value="#{itemCreate.item.name}"/>
-                    <h:message for="name"/>
-                    価格: <h:inputText id="price" value="#{itemCreate.item.price}"/>
-                    <h:message for="price" />
+			
+				<h:messages />
+				
+				<h:form styleClass="ui form">
+                    <label>商品名: <h:inputText id="name" value="#{itemCreate.item.name}"/></label>
+                    <label>価格: <h:inputText id="price" value="#{itemCreate.item.price}"/></label>
                     <h:commandButton value="保存" action="#{itemCreate.create()}" styleClass="ui button"/>
                 </h:form>
 

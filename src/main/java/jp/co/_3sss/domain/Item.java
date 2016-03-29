@@ -17,12 +17,12 @@ public class Item {
   @GeneratedValue
   private Long id;
   
-  @NotNull
-  @Length(min=1,max=100)
+  @NotNull(message="商品名を入力してください")
+  @Length(min=1,max=100, message="商品名は1文字以上100文字以下で入力してください")
   private String name;
   
-  @NotNull
-  @Min(0)
+  @NotNull(message="価格を入力してください")
+  @Min(value=0, message="価格は0円以上を入力してください")
   private int price;
 
   public Long getId() {
